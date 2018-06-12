@@ -26,11 +26,11 @@ def index(request):
 				fs = FileSystemStorage()
 				filename = fs.save(crfs_mid+"/"+myfile.name, myfile)
 				uploaded_file_url = fs.url(filename)
-				# image_file = settings.BASE_DIR+uploaded_file_url
-				# im = Image.open(image_file)
-				# text = image_to_string(im)
-				# text = image_file_to_string(image_file)
-				# text = image_file_to_string(image_file, graceful_errors=True)
-				# output = output + text
+				image_file = str(settings.BASE_DIR)+str(uploaded_file_url)
+				im = Image.open(image_file)
+				text = image_to_string(im)
+				text = image_file_to_string(image_file)
+				text = image_file_to_string(image_file, graceful_errors=True)
+				output = output + text
 		shutil.rmtree(settings.BASE_DIR+'/media/'+crfs_mid)
 		return HttpResponse(output)
